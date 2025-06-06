@@ -1,6 +1,6 @@
 import { generateId } from "../utils/GenerateId.js";
 
-
+// SECTION CONSTRUCTOR 
 export class Jot {
   constructor (data) {
     this.id = generateId();
@@ -9,14 +9,18 @@ export class Jot {
     this.body = data.body;
     this.createdAt = data.createdAt ? new Date(data.createdAt) : new Date();
     this.updatedAt = data.updatedAt ? new Date(data.updatedAt) : new Date();
-  }
 
+    // TODO Create Date Format getters & replace string interps
+  }
+  // !SECTION 
+
+  // SECTION TEMPLATE GETTERS 
   get listTemplate() {
     return `
       <div class="row mt-3 px-2 justify-content-center">
         <div class="col-lg-9 rounded" onclick="" style="background: #f2f2; Border-left: 3px solid #${this.color};">
           <div class="row px-3 py-3">
-            <!-- TODO Jot List Card Title  -->
+            <!-- NOTE Jot List Card Title  -->
             <div class="col-md-6 border-primary">
               <h5>${this.title}</h5>
             </div>
@@ -30,6 +34,9 @@ export class Jot {
     `
   }
 
+  
+  // TODO CREATE MARQUEE DIRECTION && SCROLL AMOUNT GETTER AND REPLACE STRING INTERPS
+  // TODO CREATE LIMITED NOTE SECTION FOR MARQUEE CARDS GETTER
   get marqueeTemplate() {
     return `
       <div id="marquee-wrapper z-0" class="ms-2" style="width: 100%; height: 100%; position: absolute;">
@@ -38,7 +45,7 @@ export class Jot {
             <div class="row mt-3 px-2 mb-3">
               <div class="col-4 border rounded" onclick="" style="background-color: #f2f2;">
                 <div class="row px-3 py-3">
-                  <!-- TODO Jot List Card Title  -->
+                  <!-- NOTE Jot List Card Title  -->
                   <div class="col-6 border-primary">
                     <h5>${this.title}</h5>
                   </div>
@@ -48,7 +55,7 @@ export class Jot {
                   </div>
                   <!-- TODO Limited List Body-->
                   <div class="list-body border-success" style="height: 75px;">
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicin.</p>
+                    <p>${this.body}</p>
                   </div>
                 </div>
               </div>
@@ -59,14 +66,16 @@ export class Jot {
     `
   }
 
+  // TODO CREATE LONG FORM DATE GETTER 
+  // TODO CREATE WORD COUNT GETTER & STRING INTERP 
   get activeCardTemplate() {
     return `
-      <i class="mdi mdi-bookmark" style="position:absolute; font-size: 6rem; margin-top: -36px; color: #ff002f"></i>
+      <i class="mdi mdi-bookmark" style="position:absolute; font-size: 6rem; margin-top: -36px; color: #${this.color}"></i>
       <div class="row px-1 mb-2">
-        <h5 class="col-9 active-jot-title mt-4 fs-3">JOT TITLE</h5>
+        <h5 class="col-9 active-jot-title mt-4 fs-3">${this.title}</h5>
         <div class="col-6 time-subheader" style="color: #444798">
-          <h6>dafdfadfa</h6>
-          <h6>adlfadfkladf</h6>
+          <h6>Created on: ${this.createdAt}</h6>
+          <h6>Last updated: ${this.updatedAt}</h6>
         </div>
         <div class="col-4 mt-3">
           <div class="row justify-content-end">
@@ -95,4 +104,6 @@ export class Jot {
       </div>
     `
   }
+
+  // !SECTION 
 }
