@@ -32,6 +32,15 @@ marquee {
   border-radius: 50%;
 }
 
+.title-text-box {
+  margin-left: -1rem;
+}
+
+
+
+
+
+
 
 #pop-toast-container {
   display: flex;
