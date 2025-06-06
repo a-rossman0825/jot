@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" href="./assets/img/logo.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="assets/style/main.css">
+  <link rel="stylesheet" href="assets/style/style.css">
+  <title>jot_week3</title>
+</head>
+
+<body data-bs-theme="dark">
+  <header>
+    <nav class="navbar bg-codeworks text-light gap-2 px-4 fs-1">
+      <i class="mdi mdi-draw-pen"></i>
+      <div><b>Jot...</b></div>
+      <div class="ms-auto" id="authstate"></div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container-fluid mt-3">
+      <div class="row justify-content-around mx-4">
+        <!-- SECTION LEFT DISPLAY AREA -->
+        <div class="col-md-4 border rounded">
+          <div class="row text-end pt-4">
+            <div id="jot-count"> 3 Jots</div>
+          </div>
+          <div class="row mb-4 justify-content-center">
+            <div class="col-9">
+              <div class="row align-items-center">
+                <div class="col-12 mb-2">Add a Jot</div>
+                <form>
+                  <div class="col-3">
+                    <input id="car-color" type="color" name="color" value="#FF0000" class="my-form-control-color" style="background-color: transparent; border:none;" required>
+                  </div>
+                  <div class="col-2">Searchbar</div>
+                  <button class="col-3 rounded btn btn-primary text-light text-center">Create <i class="mdi mdi-plus-thick"></i></button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- NOTE LIST JOTS SECTION -->
+          <div class="row">
+            <div id="Jots-List">
+              <!-- STUB TEMPLATE FOR LIST CARDS -->
+              <div class="row mt-3 px-2 justify-content-center">
+                <div class="col-lg-9 border rounded" onclick="" style="background: #f2f2;">
+                  <div class="row px-3 py-3">
+                    <!-- TODO Jot List Card Title  -->
+                    <div class="col-md-6 border-primary">
+                      <h5>JOT CARD TITLE</h5>
+                    </div>
+                    <!-- TODO Jot List Card Creation Time -->
+                    <div class="col-md-6 text-end border-danger">
+                      <p>00/00/00</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mt-3 px-2 mb-3 justify-content-center">
+                <div class="col-lg-9 border rounded" onclick="" style="background: #0cd56722;">
+                  <div class="row px-3 py-3">
+                    <!-- TODO Jot List Card Title  -->
+                    <div class="col-md-6 border-primary">
+                      <h5>JOT CARD TITLE</h5>
+                    </div>
+                    <!-- TODO Jot List Card Creation Time -->
+                    <div class="col-md-6 text-end border-danger">
+                      <p>00/00/00</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- !SECTION -->
+        <!-- SECTION RIGHT/ACTIVE DISPLAY -->
+        <div class="col-md-8">
+
+          <!-- STUB MARQUEE TEMPLATE  -->
+          <div id="marquee-wrapper" class="ms-2" style="width: 64.6%; height: 85.5%; position: absolute; z-index: 1;">
+            <marquee behavior="alternate" direction="up" scrollamount="12">
+              <marquee class="marquee-2" behavior="alternate" direction="left" scrollamount="10">
+                <div class="row mt-3 px-2 mb-3">
+                  <div class="col-4 border rounded" onclick="" style="background-color: #f2f2;">
+                    <div class="row px-3 py-3">
+                      <!-- TODO Jot List Card Title  -->
+                      <div class="col-6 border-primary">
+                        <h5>JOT CARD TITLE</h5>
+                      </div>
+                      <!-- TODO Jot List Card Creation Time -->
+                      <div class="col-6 text-end border-danger">
+                        <p>00/00/00</p>
+                      </div>
+                      <!-- TODO Limited List Body-->
+                      <div class="list-body border-success" style="height: 75px;">
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicin.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </marquee>
+            </marquee>
+          </div>
+
+          <!-- STUB MARQUEE TEMPLATE  -->
+          <div id="marquee-wrapper" class="ms-2" style="width: 64.6%; height: 85.5%; position: absolute; z-index: 1;">
+            <marquee behavior="alternate" direction="down" scrollamount="8">
+              <marquee class="marquee-2" behavior="alternate" direction="right" scrollamount="9">
+                <div class="row mt-3 px-2 mb-3">
+                  <div class="col-4 border rounded" onclick="" style="background-color: #0cd56722;">
+                    <div class="row px-3 py-3">
+                      <!-- TODO Jot List Card Title  -->
+                      <div class="col-6 border-primary">
+                        <h5>JOT CARD TITLE</h5>
+                      </div>
+                      <!-- TODO Jot List Card Creation Time -->
+                      <div class="col-6 text-end border-danger">
+                        <p>00/00/00</p>
+                      </div>
+                      <!-- TODO Limited List Body-->
+                      <div class="list-body border-success" style="height: 75px;">
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicin.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </marquee>
+            </marquee>
+          </div>
+
+          <div class="row mx-2">
+            <div  class="col-12 border rounded">
+              <!-- TODO LIST CARD MARQUEES TEMPLATE -->
+              <div class="row justify-content-center mb-5 mt-5">
+                <img src="./assets/img/developer.png" alt="Cartoon drawing of a developer at a computer screen sipping coffee" class="col-8 img-fluid" style="width: 60%; margin-top: 5dvh;">
+                <div class="col-5 mt-4">
+                  <h4 class="text-center">Create or Select a Jot to Start Jotting</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- !SECTION -->
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="text-bg-dark">
+    <div class="text-center">
+      <p class="mb-0"><small>Made with <i class="mdi mdi-heart text-pink"></i> by CodeWorks</small></p>
+    </div>
+  </footer>
+
+  <!-- SECTION links for bootstrap, axios, and auth -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.auth0.com/js/auth0-spa-js/1.22/auth0-spa-js.production.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/jakeoverall/auth0provider-client/browser/Auth0Provider.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <!-- !SECTION -->
+  <!-- The start of our javascript -->
+  <script src="app/App.js" type="module"></script>
+  
+</body>
+
+</html>
