@@ -12,7 +12,7 @@
   <title>jot_week3</title>
 </head>
 
-<body data-bs-theme="dark">
+<body style="background-color: #1F1D38;" class="text-light">
   <header>
     <nav class="navbar bg-codeworks text-light gap-2 px-4 fs-1">
       <i class="mdi mdi-draw-pen"></i>
@@ -26,7 +26,7 @@
     <section class="container-fluid mt-3">
       <div class="row justify-content-around mx-4">
         <!-- SECTION LEFT DISPLAY AREA -->
-        <div class="col-md-4 border rounded">
+        <div class="col-md-3 rounded" style="background-color: #282546;">
           <div class="row text-end pt-4">
             <div id="jot-count"> 3 Jots</div>
           </div>
@@ -37,9 +37,9 @@
                 <div class="row">
                   <form>
                     <div class="row justify-content-lg-between justify-content-start align-items-center">
-                      <input id="card-color" type="color" name="colorPicker" value="#00ff11" class="my-form-control-color me-4 me-md-0" style="background-color: transparent; border:none; width: 50px;" required>
-                      <input class="col-9 col-lg-7 title-text-box rounded" type="text" name="title" placeholder="Title..." id="card-title">
-                      <button class="col-9 col-lg-3 rounded btn btn-primary text-light text-center create-button">Create <i class="mdi mdi-plus-thick"></i></button>
+                      <input id="card-color" type="color" name="colorPicker" value="#00ff11" class="my-form-control-color me-4 me-md-0" style="background-color: transparent; border:none; width: 58px;" required>
+                      <input class="col-9 col-lg-6 title-text-box rounded text-light" type="text" name="title" placeholder="Title..." id="card-title" style="background-color: #1f1d38;">
+                      <button class="col-9 col-lg-4 rounded btn text-light text-center create-button" style="background-color: #1e8da6;">Create <i class="mdi mdi-plus-thick"></i></button>
                     </div>
                   </form>
                 </div>
@@ -49,28 +49,14 @@
           <!-- NOTE LIST JOTS SECTION -->
           <div class="row">
             <div id="Jots-List">
+
               <!-- STUB TEMPLATE FOR LIST CARDS -->
               <div class="row mt-3 px-2 justify-content-center">
                 <div class="col-lg-9 rounded" onclick="" style="background: #f2f2; Border-left: 3px solid #ff002f;">
                   <div class="row px-3 py-3">
                     <!-- TODO Jot List Card Title  -->
                     <div class="col-md-6 border-primary">
-                      <h5>JOT CARD TITLE</h5>
-                    </div>
-                    <!-- TODO Jot List Card Creation Time -->
-                    <div class="col-md-6 text-end border-danger">
-                      <p>00/00/00</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row mt-3 px-2 justify-content-center">
-                <div class="col-lg-9 rounded" onclick="" style="background: #04980922; Border-left: 3px solid #3515c3;">
-                  <div class="row px-3 py-3">
-                    <!-- TODO Jot List Card Title  -->
-                    <div class="col-md-6 border-primary">
-                      <h5>JOT CARD TITLE</h5>
+                      <h5>JOT TITLE</h5>
                     </div>
                     <!-- TODO Jot List Card Creation Time -->
                     <div class="col-md-6 text-end border-danger">
@@ -85,13 +71,50 @@
         </div>
         <!-- !SECTION -->
         <!-- SECTION RIGHT/ACTIVE DISPLAY -->
-        <div class="col-md-8 mt-3 mt-md-0">
+        <!-- STUB ACTIVE CARD TEMPLATE -->
+        <div class="col-md-8 mt-3 mt-md-0 rounded d-none" style="background-color: #282546;">
+          <i class="mdi mdi-bookmark" style="position:absolute; font-size: 6rem; margin-top: -36px; color: #ff002f"></i>
+          <div class="row px-1 mb-2">
+            <h5 class="col-9 active-jot-title mt-4 fs-3">JOT TITLE</h5>
+            <div class="col-6 time-subheader" style="color: #444798">
+              <h6>dafdfadfa</h6>
+              <h6>adlfadfkladf</h6>
+            </div>
+            <div class="col-4 mt-3">
+              <div class="row justify-content-end">
+                <button class="btn rounded col-md-4 order-2 order-md-1 text-danger border border-danger" style="background-color: #1F1D38;">
+                  DELETE <i class="mdi mdi-trash-can-outline"></i>
+                </button>
+                <button class="btn btn-success col-md-4 order-1 order-md-2 ms-1" style="background-color: #1e8da6;">
+                  SAVE <i class="mdi mdi-content-save-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col">
+              <div class="mb-3 mx-4">
+                <form>
+                  <textarea class="form-control text-light" name="body" id="body-text" rows="20" placeholder="Write Your Note Here!!!" style="background-color:#2a244d; border: 1px solid #444798;"></textarea>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-end">
+            <div class="col-5 text-end me-5 mb-3">
+              109 Words
+            </div>
+          </div>
+        </div>
+        </
+        <!-- NOTE INACTIVE SCREEN -->
+        <div class="col-md-8 mt-3 mt-md-0 rounded" style="background-color: #282546; z-index: 0;">
 
           <!-- STUB MARQUEE TEMPLATE  -->
-          <div id="marquee-wrapper z-0" class="ms-2" style="width: 100%; height: 100%; position: absolute;">
+          <div id="marquee-wrapper" class="ms-2" style="width: 100%; height: 100%; position: absolute; z-index: -1;">
             <marquee behavior="alternate" direction="up" scrollamount="12">
               <marquee class="marquee-2" behavior="alternate" direction="left" scrollamount="10">
-                <div class="row mt-3 px-2 mb-3">
+                <div class="row mt-3 px-2 mb-3" style="z-index: 0;">
                   <div class="col-4 border rounded" onclick="" style="background-color: #f2f2;">
                     <div class="row px-3 py-3">
                       <!-- TODO Jot List Card Title  -->
@@ -113,34 +136,8 @@
             </marquee>
           </div>
 
-          <!-- STUB MARQUEE TEMPLATE  -->
-          <div id="marquee-wrapper z-0" class="ms-2" style="width: 70%; height: 80.5%; position: absolute;">
-            <marquee behavior="alternate" direction="down" scrollamount="8">
-              <marquee class="marquee-2" behavior="alternate" direction="right" scrollamount="9">
-                <div class="row mt-3 px-2 mb-3">
-                  <div class="col-4 border rounded" onclick="" style="background-color: #0cd56722;">
-                    <div class="row px-3 py-3">
-                      <!-- TODO Jot List Card Title  -->
-                      <div class="col-6 border-primary">
-                        <h5>JOT CARD TITLE</h5>
-                      </div>
-                      <!-- TODO Jot List Card Creation Time -->
-                      <div class="col-6 text-end border-danger">
-                        <p>00/00/00</p>
-                      </div>
-                      <!-- TODO Limited List Body-->
-                      <div style="height: 75px;">
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicin.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </marquee>
-            </marquee>
-          </div>
-
           <div class="row mx-md-2">
-            <div  class="col-12 border rounded">
+            <div  class="col-12 rounded">
               <!-- TODO LIST CARD MARQUEES TEMPLATE -->
               <div class="row justify-content-center mb-5 mt-5">
                 <img src="./assets/img/developer.png" alt="Cartoon drawing of a developer at a computer screen sipping coffee" class="col-8 img-fluid" style="width: 60%; margin-top: 5dvh;">

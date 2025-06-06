@@ -36,8 +36,19 @@ marquee {
   margin-left: -1rem;
 }
 
+.active-jot-title {
+  margin-left: 3.2em;
+}
 
+.time-subheader {
+  margin-left: 6em;
+}
 
+::placeholder {
+  font-weight: bolder;
+  opacity: 0.9;
+  color: #444798 !important;
+}
 
 
 
