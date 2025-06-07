@@ -8,6 +8,7 @@ export class JotsController {
 
   constructor() {
     console.log('🎛️', 'Jots Controller Ready');
+    this.drawJotsList();
     // TODO CREATE OBSERVER FOR NEW NOTE DRAW 
   }
 

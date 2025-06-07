@@ -18,7 +18,7 @@ export class Jot {
   get listTemplate() {
     return `
       <div class="row mt-3 px-2 justify-content-center">
-        <div class="col-lg-9 rounded" onclick="" style="background: #f2f2; Border-left: 3px solid #${this.color};">
+        <div class="col-lg-9 rounded jot-list-card" onclick="" style="background: #f2f2; Border-left: 3px solid #${this.color};">
           <div class="row px-3 py-3">
             <!-- NOTE Jot List Card Title  -->
             <div class="col-md-6 border-primary">
@@ -39,11 +39,11 @@ export class Jot {
   // TODO CREATE LIMITED NOTE SECTION FOR MARQUEE CARDS GETTER
   get marqueeTemplate() {
     return `
-      <div id="marquee-wrapper z-0" class="ms-2" style="width: 100%; height: 100%; position: absolute;">
+      <div id="marquee-wrapper z-0" class="ms-2" style="width: 60dvw; height: 55dvh; position: absolute;">
         <marquee behavior="alternate" direction="${this.marqueeDir1}" scrollamount="${this.marqueeSpeed}">
-          <marquee class="marquee-2" behavior="alternate" direction="this.${this.marqueeDir2}" scrollamount="${this.marqueeSpeed}">
-            <div class="row mt-3 px-2 mb-3">
-              <div class="col-4 border rounded" style="background-color: #${this.color}; color: #fff">
+          <marquee class="marquee-2" behavior="alternate" direction="${this.marqueeDir2}" scrollamount="${this.marqueeSpeed}">
+            <div class="row mt-3 px-2 mb-3" style="width: 75%;">
+              <div class="col-4 rounded" style="background-color: #${this.color}80; color: #fff; height: 7rem;">
                 <div class="row px-3 py-3">
                   <!-- NOTE Jot List Card Title  -->
                   <div class="col-6 border-primary">
@@ -70,7 +70,7 @@ export class Jot {
   // TODO CREATE WORD COUNT GETTER & STRING INTERP ✅
   get activeCardTemplate() {
     return `
-      <i class="mdi mdi-bookmark" style="position:absolute; font-size: 6rem; margin-top: -36px; color: #${this.color}"></i>
+      <i class="mdi mdi-bookmark" style="position: absolute; font-size: 6rem; margin-top: -36px; color: #${this.color}"></i>
       <div class="row px-1 mb-2">
         <h5 class="col-9 active-jot-title mt-4 fs-3">${this.title}</h5>
         <div class="col-6 time-subheader" style="color: #444798">
@@ -128,10 +128,10 @@ export class Jot {
 
   // SECTION TRUNCATED BODY TEXT GETTER 
   get shortBodyText() {
-    if (this.body.length <= 20) {
+    if (this.body.length <= 40) {
       return this.body;
     } else {
-      return this.body.slice(0, 20) + '...';
+      return this.body.slice(0, 40) + '...';
     }
   }
 
@@ -155,7 +155,7 @@ export class Jot {
   get marqueeDir2() {
     let direction = "";
     let num = Math.floor(Math.random() * 2);
-    if (num == 0) {
+    if (num > 0.5) {
       direction = "left";
     } else {
       direction = "right";
@@ -164,7 +164,7 @@ export class Jot {
   }
 
   get marqueeSpeed() {
-    return Math.floor(Math.random() * 6) + 8; //To get num between 8 & 14
+    return Math.floor(Math.random() * 10) + 4; //To get num between 8 & 14
   }
 
 }
