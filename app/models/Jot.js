@@ -26,7 +26,7 @@ export class Jot {
             </div>
             <!-- TODO Jot List Card Creation Time -->
             <div class="col-md-6 text-end border-danger">
-              <p>${this.createdAt}</p>
+              <p>${this.shortFormCreatedAt}</p>
             </div>
           </div>
         </div>
@@ -40,10 +40,10 @@ export class Jot {
   get marqueeTemplate() {
     return `
       <div id="marquee-wrapper z-0" class="ms-2" style="width: 100%; height: 100%; position: absolute;">
-        <marquee behavior="alternate" direction="up" scrollamount="12">
-          <marquee class="marquee-2" behavior="alternate" direction="left" scrollamount="10">
+        <marquee behavior="alternate" direction="${this.marqueeDir1}" scrollamount="${this.marqueeSpeed}">
+          <marquee class="marquee-2" behavior="alternate" direction="this.${this.marqueeDir2}" scrollamount="${this.marqueeSpeed}">
             <div class="row mt-3 px-2 mb-3">
-              <div class="col-4 border rounded" onclick="" style="background-color: #f2f2;">
+              <div class="col-4 border rounded" style="background-color: #${this.color}; color: #fff">
                 <div class="row px-3 py-3">
                   <!-- NOTE Jot List Card Title  -->
                   <div class="col-6 border-primary">
@@ -51,11 +51,11 @@ export class Jot {
                   </div>
                   <!-- TODO Jot List Card Creation Time -->
                   <div class="col-6 text-end border-danger">
-                    <p>${this.createdAt}</p>
+                    <p>00/00/00</p>
                   </div>
                   <!-- TODO Limited List Body-->
                   <div class="list-body border-success" style="height: 75px;">
-                    <p>${this.body}</p>
+                    <p>${this.shortBodyText}</p>
                   </div>
                 </div>
               </div>
@@ -66,16 +66,16 @@ export class Jot {
     `
   }
 
-  // TODO CREATE LONG FORM DATE GETTER 
-  // TODO CREATE WORD COUNT GETTER & STRING INTERP 
+  // TODO CREATE LONG FORM DATE GETTER ✅
+  // TODO CREATE WORD COUNT GETTER & STRING INTERP ✅
   get activeCardTemplate() {
     return `
       <i class="mdi mdi-bookmark" style="position:absolute; font-size: 6rem; margin-top: -36px; color: #${this.color}"></i>
       <div class="row px-1 mb-2">
         <h5 class="col-9 active-jot-title mt-4 fs-3">${this.title}</h5>
         <div class="col-6 time-subheader" style="color: #444798">
-          <h6>Created on: ${this.createdAt}</h6>
-          <h6>Last updated: ${this.updatedAt}</h6>
+          <h6>Created on: ${this.longFormCreatedAt}</h6>
+          <h6>Last updated: ${this.longFormUpdatedAt}</h6>
         </div>
         <div class="col-4 mt-3">
           <div class="row justify-content-end">
@@ -99,11 +99,72 @@ export class Jot {
       </div>
       <div class="row justify-content-end">
         <div class="col-5 text-end me-5 mb-3">
-          109 Words
-        </div>
+          ${this.wordCount} Words
+        </div>  
       </div>
     `
   }
+  // !SECTION 
+  
+  // SECTION DATE FORMAT GETTERS 
+  get longFormCreatedAt() {
+    return this.createdAt.toLocaleDateString('en-US', {weekday: "long", year: "numeric", month: "long", day: "numeric"});
+  }
+
+  get shortFormCreatedAt() {
+    return this.createdAt.toLocaleDateString('en-US', {year: "numeric", month: "numeric", day: "numeric"});
+  }
+
+  get longFormUpdatedAt() {
+    return this.createdAt.toLocaleDateString('en-US', {weekday: "long", year: "numeric", month: "long", day: "numeric"});
+  }
 
   // !SECTION 
+
+  // SECTION COLOR GETTER 
+
+
+  // !SECTION 
+
+  // SECTION TRUNCATED BODY TEXT GETTER 
+  get shortBodyText() {
+    if (this.body.length <= 20) {
+      return this.body;
+    } else {
+      return this.body.slice(0, 20) + '...';
+    }
+  }
+
+  // !SECTION 
+
+  get wordCount() {
+    return this.body.length;
+  }
+
+  get marqueeDir1() {
+    let direction = "";
+    let num = Math.floor(Math.random() * 2);
+    if (num == 0) {
+      direction = "up";
+    } else {
+      direction = "down";
+    }
+    return direction;
+  }
+
+  get marqueeDir2() {
+    let direction = "";
+    let num = Math.floor(Math.random() * 2);
+    if (num == 0) {
+      direction = "left";
+    } else {
+      direction = "right";
+    }
+    return direction;
+  }
+
+  get marqueeSpeed() {
+    return Math.floor(Math.random() * 6) + 8; //To get num between 8 & 14
+  }
+
 }
