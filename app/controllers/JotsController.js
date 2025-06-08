@@ -120,6 +120,7 @@ export class JotsController {
     const body = document.getElementById('body-text').value;
     console.log('🎛️📩✅', body);
     jotsService.saveActiveJot(body);
+    this.drawActiveJot();
   }
 
 

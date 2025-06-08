@@ -54,7 +54,7 @@ export class Jot {
                     <p>${this.shortFormCreatedAt}</p>
                   </div>
                   <!-- TODO Limited List Body-->
-                  <div class="list-body border-success" style="height: 75px;">
+                  <div class="list-body border-success" style="height: 75px; overflow: hidden;">
                     <p>${this.shortBodyText}</p>
                   </div>
                 </div>
@@ -98,7 +98,7 @@ export class Jot {
       </div>
       <div class="row justify-content-end">
         <div class="col-5 text-end me-5 mb-3">
-          ${this.wordCount} Words
+          '${this.wordCount}' Words
         </div>
         </form>  
       </div>
@@ -131,14 +131,16 @@ export class Jot {
     if (this.body.length <= 40) {
       return this.body;
     } else {
-      return this.body.slice(0, 40) + '...';
+      return this.body.slice(0, 40).trim() + '...';
     }
   }
 
   // !SECTION 
 
   get wordCount() {
-    return this.body.length;
+    const words = this.body.trim().split(/\s+/);
+    const wordCount = words.length;
+    return wordCount;
   }
 
   get marqueeDir1() {
