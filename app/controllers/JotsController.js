@@ -15,15 +15,18 @@ export class JotsController {
     AppState.on('jots', this.drawJotsList);
     AppState.on('jots', this.drawJotsMarquees);
     AppState.on('jots', this.drawNumOfJots);
+    AppState.on('activeJot', this.drawActiveJot);
 
 
     this.drawJotsList();
     // TODO CREATE OBSERVER FOR NEW NOTE DRAW ✅
+    jotsService.loadJots();
   }
   // SECTION OBSERVER DRAW FUNCS 
   drawJotsList() {
     const jotCards = AppState.jots;
     let listContent = "";
+
     jotCards.forEach((card) => listContent += card.listTemplate);
     setHTML("jots-list", listContent);
     console.log('✏️🎛️Cards', jotCards);
@@ -32,6 +35,7 @@ export class JotsController {
   drawNumOfJots() {
     let numOfJots = AppState.jots.length;
     let htmlContent = "";
+
     if (numOfJots == 1) {
       htmlContent = `${numOfJots} Jot`;
     } else {
@@ -63,6 +67,36 @@ export class JotsController {
     jotsService.setActiveJot(jotId);
   }
 
+  drawActiveJot() {
+    console.log('✏️🎛️active');
+    const activeJot = AppState.activeJot;
+    let activeScreen = document.getElementById('active-screen');
+    let inactiveScreen = document.getElementById('inactive-screen');
+
+    if (!activeJot) {
+      activeScreen.classList.add('d-none');
+      inactiveScreen.classList.remove('d-none');
+      return;
+    } else {
+        setHTML('active-screen', activeJot.activeCardTemplate);
+        inactiveScreen.classList.add('d-none');
+        activeScreen.classList.remove('d-none');
+      }
+  }
+
+  deleteJot(jotId) {
+    console.log('🗑️🎛️DELETE CLICKED', jotId);
+    const deleteConfirmed = window.confirm("Are you sure you want to delete this Jot FOREVER??");
+
+    if (deleteConfirmed !== true) {
+      return;
+    }
+    console.log('🗑️🎛️ deleting jot', jotId);
+    jotsService.deleteJot(jotId);
+    document.getElementById('active-screen').classList.add('d-none');
+    document.getElementById('inactive-screen').classList.remove('d-none');
+  }
+
   // !SECTION 
 
   // SECTION CREATE JOT METHODS 
@@ -70,9 +104,22 @@ export class JotsController {
     event.preventDefault();
     console.log('✏️📝', 'createNewJot');
     const form = event.target;
-    console.log('✏️🎯createNewForm', form);
     const formData = getFormData(form);
+
+    console.log('✏️🎯createNewForm', form);
     jotsService.createJot(formData);
+  }
+
+
+  // !SECTION 
+
+  // SECTION LOAD/SAVE STATES 
+  saveActiveJot() {
+    console.log('📩🎛️');
+    // @ts-ignore
+    const body = document.getElementById('body-text').value;
+    console.log('🎛️📩✅', body);
+    jotsService.saveActiveJot(body);
   }
 
 

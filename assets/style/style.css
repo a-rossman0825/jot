@@ -70,8 +70,7 @@ marquee {
 }
 
 .active-list-card {
-  background-color: #444798 !important;
-  
+  background-color: red !important;
 }
 
 
