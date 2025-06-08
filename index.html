@@ -38,7 +38,7 @@
                   <form onsubmit="app.jotsController.createNewJot()">
                     <div class="row justify-content-lg-between justify-content-start align-items-center">
                       <input id="card-color" type="color" name="color" value="#00ff11" class="my-form-control-color me-4 me-md-0" style="background-color: transparent; border:none; width: 58px;" required>
-                      <input class="col-9 col-lg-6 title-text-box rounded text-light" type="text" name="title" placeholder="Title..." id="card-title" style="background-color: #1f1d38;" required>
+                      <input class="col-9 col-lg-6 title-text-box rounded text-light" type="text" name="title" placeholder="Title..." id="card-title" style="background-color: #1f1d38;" required minlength="3" maxlength="15">
                       <button class="col-9 col-lg-4 rounded btn text-light text-center create-button" style="background-color: #1e8da6;">Create <i class="mdi mdi-plus-thick"></i></button>
                     </div>
                   </form>

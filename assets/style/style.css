@@ -41,6 +41,11 @@ marquee {
   border-radius: 50%;
 }
 
+#jots-list {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
 .title-text-box {
   margin-left: -1rem;
 }

@@ -75,7 +75,7 @@ export class Jot {
         <form id="active-form">
           <h5 class="col-9 active-jot-title mt-4 fs-3">${this.title}</h5>
           <div class="col-6 time-subheader" style="color: #444798">
-            <h6>Created on: ${this.longFormCreatedAt}</h6>
+            <h6>Created on: ${this.shortFormCreatedAt}</h6>
             <h6>Last updated: ${this.longFormUpdatedAt}</h6>
           </div>
           <div class="col-4 mt-3">
@@ -107,12 +107,8 @@ export class Jot {
   // !SECTION 
   
   // SECTION DATE FORMAT GETTERS 
-  get longFormCreatedAt() {
-    return this.createdAt.toLocaleDateString('en-US', {weekday: "long", year: "numeric", month: "long", day: "numeric"});
-  }
-
   get shortFormCreatedAt() {
-    return this.createdAt.toLocaleDateString('en-US', {year: "numeric", month: "numeric", day: "numeric"});
+    return this.createdAt.toLocaleDateString('en-US', {year: "2-digit", month: "2-digit", day: "2-digit"});
   }
 
   get longFormUpdatedAt() {
