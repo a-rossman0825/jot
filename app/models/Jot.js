@@ -6,7 +6,7 @@ export class Jot {
     this.id = generateId();
     this.title = data.title;
     this.color = data.color;
-    this.body = data.body;
+    this.body = data.body ? data.body.trim() : '';
     this.createdAt = data.createdAt ? new Date(data.createdAt) : new Date();
     this.updatedAt = data.updatedAt ? new Date(data.updatedAt) : new Date();
 
@@ -18,14 +18,14 @@ export class Jot {
   get listTemplate() {
     return `
       <div class="row mt-3 px-2 justify-content-center">
-        <div class="col-lg-9 rounded jot-list-card" onclick="" style="background: #f2f2; Border-left: 3px solid #${this.color};">
+        <div class="col-lg-9 rounded jot-list-card" onclick="setActiveJot(${this.id})" style="Border-left: 3px solid ${this.color};">
           <div class="row px-3 py-3">
             <!-- NOTE Jot List Card Title  -->
-            <div class="col-md-6 border-primary">
+            <div class="border-primary">
               <h5>${this.title}</h5>
             </div>
             <!-- TODO Jot List Card Creation Time -->
-            <div class="col-md-6 text-end border-danger">
+            <div class=" text-end border-danger">
               <p>${this.shortFormCreatedAt}</p>
             </div>
           </div>
@@ -39,19 +39,19 @@ export class Jot {
   // TODO CREATE LIMITED NOTE SECTION FOR MARQUEE CARDS GETTER
   get marqueeTemplate() {
     return `
-      <div id="marquee-wrapper z-0" class="ms-2" style="width: 60dvw; height: 55dvh; position: absolute;">
+      <div id="marquee-wrapper z-0" class="ms-2" style="width: 84dvw; height: 55dvh; position: absolute;">
         <marquee behavior="alternate" direction="${this.marqueeDir1}" scrollamount="${this.marqueeSpeed}">
           <marquee class="marquee-2" behavior="alternate" direction="${this.marqueeDir2}" scrollamount="${this.marqueeSpeed}">
-            <div class="row mt-3 px-2 mb-3" style="width: 75%;">
-              <div class="col-4 rounded" style="background-color: #${this.color}80; color: #fff; height: 7rem;">
+            <div class="marquee-cards row mt-3 px-2 mb-3">
+              <div class="col-4 rounded marquee-cards-inner" style="background-color: ${this.color}80;">
                 <div class="row px-3 py-3">
                   <!-- NOTE Jot List Card Title  -->
                   <div class="col-6 border-primary">
-                    <h5>${this.title}</h5>
+                    <h6>${this.title}</h6>
                   </div>
                   <!-- TODO Jot List Card Creation Time -->
                   <div class="col-6 text-end border-danger">
-                    <p>00/00/00</p>
+                    <p>${this.shortFormCreatedAt}</p>
                   </div>
                   <!-- TODO Limited List Body-->
                   <div class="list-body border-success" style="height: 75px;">
@@ -70,7 +70,7 @@ export class Jot {
   // TODO CREATE WORD COUNT GETTER & STRING INTERP ✅
   get activeCardTemplate() {
     return `
-      <i class="mdi mdi-bookmark" style="position: absolute; font-size: 6rem; margin-top: -36px; color: #${this.color}"></i>
+      <i class="mdi mdi-bookmark" style="position: absolute; font-size: 6rem; margin-top: -36px; color: ${this.color}"></i>
       <div class="row px-1 mb-2">
         <h5 class="col-9 active-jot-title mt-4 fs-3">${this.title}</h5>
         <div class="col-6 time-subheader" style="color: #444798">
@@ -92,7 +92,7 @@ export class Jot {
         <div class="col">
           <div class="mb-3 mx-4">
             <form>
-              <textarea class="form-control text-light" name="body" id="body-text" rows="20" placeholder="Write Your Note Here!!!" style="background-color:#2a244d; border: 1px solid #444798;"></textarea>
+              <textarea class="form-control text-light" name="body" id="body-text" rows="20" placeholder="Write Your Note Here!!!" style="background-color:#2a244d; border: 1px solid #444798;">${this.body}</textarea>
             </form>
           </div>
         </div>

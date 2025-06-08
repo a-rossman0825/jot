@@ -15,6 +15,15 @@ marquee {
   height: 100%;
 }
 
+.marquee-cards {
+  width: 1000px;
+}
+
+.marquee-cards-inner {
+  color: #fff; 
+  height: 7rem;
+}
+
 .marquee-2 {
   width: 116%;
 }
@@ -50,10 +59,19 @@ marquee {
   color: #444798 !important;
 }
 
+.jot-list-card {
+  background: #f2f2;
+}
+
 .jot-list-card:hover {
   cursor: pointer;
   transform: translateY(-0.2rem);
   background-color: #444798 !important;
+}
+
+.active-list-card {
+  background-color: #444798 !important;
+  
 }
 
 

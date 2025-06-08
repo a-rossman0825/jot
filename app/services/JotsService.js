@@ -1,12 +1,8 @@
 import { AppState } from "../AppState.js";
+import { Jot } from "../models/jot.js";
 
 
 class JotsService {
-
-  numOfJots() {
-    // console.log('🦮', AppState.jots.length);
-    return AppState.jots.length;
-  }
 
   marqueeQuantity() {
     const marqueeCards = AppState.jots;
@@ -15,6 +11,21 @@ class JotsService {
     } else {
       return marqueeCards.slice(0, 15);
     }
+  }
+
+  createJot(formData) {
+    console.log('+🦮create1', formData);
+    const newJot = new Jot(formData);
+    AppState.jots.push(newJot);
+    console.log('+🦮JotsPush', AppState.jots);
+    AppState.activeJot = newJot;
+    // TODO SAVE ACTIVE CASE FILE 
+  }
+
+  setActiveJot(jotId) {
+    const selectedJot = AppState.jots.find((jot) => jot.id === jotId);
+    console.log('🦮set📝', selectedJot);
+    AppState.activeJot = selectedJot;
   }
 
 }
