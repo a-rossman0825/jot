@@ -22,7 +22,7 @@ export class Jot {
           <div class="row px-3 py-3">
             <!-- NOTE Jot List Card Title  -->
             <div class="border-primary">
-              <h5 class="text-truncate" style="max-width: 100%; overflow: hidden; white-space: nowrap;">${this.title}</h5>
+              <h5 class="text-truncate" style="max-width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">${this.title}</h5>
             </div>
             <!-- TODO Jot List Card Creation Time -->
             <div class=" text-end border-danger">
@@ -42,7 +42,7 @@ export class Jot {
       <div id="marquee-wrapper z-0" class="ms-2" style="width: 84dvw; height: 55dvh; position: absolute;">
         <marquee behavior="alternate" direction="${this.marqueeDir1}" scrollamount="${this.marqueeSpeed}">
           <marquee class="marquee-2" behavior="alternate" direction="${this.marqueeDir2}" scrollamount="${this.marqueeSpeed}">
-            <div class="marquee-cards row mt-3 px-2 mb-3">
+            <div class="marquee-cards row mt-3 px-2 mb-3" onclick="app.jotsController.setActiveJot('${this.id}')">
               <div class="col-4 rounded marquee-cards-inner" style="background-color: ${this.color}80;">
                 <div class="row px-3 py-3">
                   <!-- NOTE Jot List Card Title  -->
@@ -54,7 +54,7 @@ export class Jot {
                     <p>${this.shortFormCreatedAt}</p>
                   </div>
                   <!-- TODO Limited List Body-->
-                  <div class="list-body border-success" style="height: 75px; overflow: hidden;">
+                  <div class="list-body text-truncate" style="height: 75px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
                     <p>${this.shortBodyText}</p>
                   </div>
                 </div>

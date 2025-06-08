@@ -24,6 +24,13 @@ marquee {
   height: 7rem;
 }
 
+/* .marquee-cards:hover { 
+  border: 2px solid gold;
+  cursor: grab;
+}
+*/
+
+
 .marquee-2 {
   width: 116%;
 }
