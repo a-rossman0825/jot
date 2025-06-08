@@ -116,7 +116,7 @@ export class Jot {
   }
 
   get longFormUpdatedAt() {
-    return this.createdAt.toLocaleDateString('en-US', {weekday: "long", year: "numeric", month: "long", day: "numeric", hour: 'numeric', minute: 'numeric', second: '2-digit'});
+    return this.updatedAt.toLocaleDateString('en-US', {weekday: "long", year: "numeric", month: "long", day: "numeric", hour: 'numeric', minute: 'numeric', second: '2-digit'});
   }
 
   // !SECTION 

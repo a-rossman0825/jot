@@ -8,8 +8,8 @@ import { setHTML } from "../utils/Writer.js";
 export class JotsController {
 
   constructor() {
-    console.log('🎛️', 'Jots Controller Ready');
-    console.table(AppState.jots);
+    // console.log('🎛️', 'Jots Controller Ready');
+    
     this.drawJotsMarquees();
     this.drawNumOfJots();
     AppState.on('jots', this.drawJotsList);
@@ -21,6 +21,7 @@ export class JotsController {
     this.drawJotsList();
     // TODO CREATE OBSERVER FOR NEW NOTE DRAW ✅
     jotsService.loadJots();
+    console.table(AppState.jots);
   }
   // SECTION OBSERVER DRAW FUNCS 
   drawJotsList() {
@@ -29,7 +30,7 @@ export class JotsController {
 
     jotCards.forEach((card) => listContent += card.listTemplate);
     setHTML("jots-list", listContent);
-    console.log('✏️🎛️Cards', jotCards);
+    // console.log('✏️🎛️Cards', jotCards);
   };
 
   drawNumOfJots() {
@@ -42,7 +43,7 @@ export class JotsController {
       htmlContent = `${numOfJots} Jots`;
     }
     setHTML("jot-count", htmlContent);
-    console.log('✏️🎛️drawNum', numOfJots);
+    // console.log('✏️🎛️drawNum', numOfJots);
   }
   // !SECTION 
 
@@ -55,7 +56,7 @@ export class JotsController {
     let newCardContent = cardContent + AppState.marqueeBackground;
 
     setHTML('inactive-screen', newCardContent);
-    console.log('✏️🎛️Marquee', marqueeCards.length);
+    // console.log('✏️🎛️Marquee', marqueeCards.length);
     
   }
 
@@ -63,12 +64,12 @@ export class JotsController {
 
   // SECTION ACTIVE JOT METHODS 
   setActiveJot(jotId) {
-    console.log('🎛️set📝');
+    // console.log('🎛️set📝');
     jotsService.setActiveJot(jotId);
   }
 
   drawActiveJot() {
-    console.log('✏️🎛️active');
+    // console.log('✏️🎛️active');
     const activeJot = AppState.activeJot;
     let activeScreen = document.getElementById('active-screen');
     let inactiveScreen = document.getElementById('inactive-screen');
@@ -85,13 +86,13 @@ export class JotsController {
   }
 
   deleteJot(jotId) {
-    console.log('🗑️🎛️DELETE CLICKED', jotId);
+    // console.log('🗑️🎛️DELETE CLICKED', jotId);
     const deleteConfirmed = window.confirm("Are you sure you want to delete this Jot FOREVER??");
 
     if (deleteConfirmed !== true) {
       return;
     }
-    console.log('🗑️🎛️ deleting jot', jotId);
+    // console.log('🗑️🎛️ deleting jot', jotId);
     jotsService.deleteJot(jotId);
     document.getElementById('active-screen').classList.add('d-none');
     document.getElementById('inactive-screen').classList.remove('d-none');
@@ -102,11 +103,11 @@ export class JotsController {
   // SECTION CREATE JOT METHODS 
   createNewJot() {
     event.preventDefault();
-    console.log('✏️📝', 'createNewJot');
+    // console.log('✏️📝', 'createNewJot');
     const form = event.target;
     const formData = getFormData(form);
 
-    console.log('✏️🎯createNewForm', form);
+    // console.log('✏️🎯createNewForm', form);
     jotsService.createJot(formData);
   }
 
@@ -115,10 +116,10 @@ export class JotsController {
 
   // SECTION LOAD/SAVE STATES 
   saveActiveJot() {
-    console.log('📩🎛️');
+    // console.log('📩🎛️');
     // @ts-ignore
     const body = document.getElementById('body-text').value;
-    console.log('🎛️📩✅', body);
+    // console.log('🎛️📩✅', body);
     jotsService.saveActiveJot(body);
     this.drawActiveJot();
   }

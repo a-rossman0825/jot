@@ -26,13 +26,21 @@ class JotsService {
 
   setActiveJot(jotId) {
     const selectedJot = AppState.jots.find((jot) => jot.id === jotId);
-    console.log('🦮set📝', selectedJot);
+    // console.log('🦮set📝', selectedJot);
     AppState.activeJot = selectedJot;
   }
 
   saveActiveJot(newBody) {
-    AppState.activeJot.body = newBody;
-    AppState.activeJot.updatedAt = new Date();
+    const jot = AppState.activeJot;
+    jot.body = newBody;
+    jot.updatedAt = new Date();
+
+    console.log('💾 saving jotdate: ', jot);
+    const foundJotIndex = AppState.jots.findIndex((foundJot) => foundJot.id == jot.id);
+    
+      if (foundJotIndex !== -1) {
+        AppState.jots.splice(foundJotIndex, 1, jot);
+      }
     this.saveJots();
   }
 
@@ -46,13 +54,13 @@ class JotsService {
   }
 
   saveJots() {
-    console.log('💾 saving jots: ', AppState.jots)
+    // console.log('💾 saving jots: ', AppState.jots)
     saveState('jots', AppState.jots);
   }
 
   loadJots() {
     const jots = loadState('jots', [Jot]);
-    console.log('🦮📤');
+    // console.log('🦮📤');
     AppState.jots = jots;
   }
 
