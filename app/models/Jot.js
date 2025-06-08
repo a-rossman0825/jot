@@ -10,7 +10,7 @@ export class Jot {
     this.createdAt = data.createdAt ? new Date(data.createdAt) : new Date();
     this.updatedAt = data.updatedAt ? new Date(data.updatedAt) : new Date();
 
-    // TODO Create Date Format getters & replace string interps
+    // TODO Create Date Format getters & replace string interps ✅
   }
   // !SECTION 
 
@@ -35,8 +35,8 @@ export class Jot {
   }
 
   
-  // TODO CREATE MARQUEE DIRECTION && SCROLL AMOUNT GETTER AND REPLACE STRING INTERPS
-  // TODO CREATE LIMITED NOTE SECTION FOR MARQUEE CARDS GETTER
+  // TODO CREATE MARQUEE DIRECTION && SCROLL AMOUNT GETTER AND REPLACE STRING INTERPS ✅
+  // TODO CREATE LIMITED NOTE SECTION FOR MARQUEE CARDS GETTER ✅
   get marqueeTemplate() {
     return `
       <div id="marquee-wrapper z-0" class="ms-2" style="width: 84dvw; height: 55dvh; position: absolute;">
@@ -117,17 +117,12 @@ export class Jot {
 
   // !SECTION 
 
-  // SECTION COLOR GETTER 
-
-
-  // !SECTION 
-
   // SECTION TRUNCATED BODY TEXT GETTER 
   get shortBodyText() {
-    if (this.body.length <= 40) {
+    if (this.body.length <= 35) {
       return this.body;
     } else {
-      return this.body.slice(0, 40).trim() + '...';
+      return this.body.slice(0, 35).trim() + '...';
     }
   }
 
