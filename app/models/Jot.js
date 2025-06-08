@@ -22,7 +22,7 @@ export class Jot {
           <div class="row px-3 py-3">
             <!-- NOTE Jot List Card Title  -->
             <div class="border-primary">
-              <h5>${this.title}</h5>
+              <h5 class="text-truncate" style="max-width: 100%; overflow: hidden; white-space: nowrap;">${this.title}</h5>
             </div>
             <!-- TODO Jot List Card Creation Time -->
             <div class=" text-end border-danger">
