@@ -134,6 +134,8 @@ export class Jot {
     return wordCount;
   }
 
+  // SECTION Marquee attribute getters 
+
   get marqueeDir1() {
     let direction = "";
     let num = Math.floor(Math.random() * 2);
@@ -159,5 +161,7 @@ export class Jot {
   get marqueeSpeed() {
     return Math.floor(Math.random() * 10) + 4; //To get num between 8 & 14
   }
+
+  // !SECTION
 
 }

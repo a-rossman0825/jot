@@ -5,6 +5,8 @@ import { loadState, saveState } from "../utils/Store.js";
 
 class JotsService {
 
+  // SECTION JOT ACTIVITIES Funcs 
+
   marqueeQuantity() {
     const marqueeCards = AppState.jots;
     if (marqueeCards.length <= 15) {
@@ -52,7 +54,9 @@ class JotsService {
 
     this.saveJots();
   }
+  // !SECTION 
 
+  // SECTION SAVE STATE FUNCS 
   saveJots() {
     // console.log('💾 saving jots: ', AppState.jots)
     saveState('jots', AppState.jots);
@@ -64,6 +68,7 @@ class JotsService {
     AppState.jots = jots;
   }
 
+  // !SECTION 
 }
 
 export const jotsService = new JotsService();
